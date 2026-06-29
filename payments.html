@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Payments | Hotel Management System</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+<div class="logo">
+<h2>GREAT GOD GUEST HOUSE</h2>
+</div>
+
+<nav>
+
+<a href="index.html">
+<i class="fas fa-chart-line"></i>
+Dashboard
+</a>
+
+<a href="reservations.html">
+<i class="fas fa-calendar-days"></i>
+Reservations
+</a>
+
+<a href="bookings.html">
+<i class="fas fa-calendar-check"></i>
+Bookings
+</a>
+
+<a href="rooms.html">
+<i class="fas fa-bed"></i>
+Rooms
+</a>
+
+<a href="guests.html">
+<i class="fas fa-users"></i>
+Guests
+</a>
+
+<a href="payments.html" class="active">
+<i class="fas fa-money-bill-wave"></i>
+Payments
+</a>
+
+<a href="reports.html">
+<i class="fas fa-chart-pie"></i>
+Reports
+</a>
+
+<a href="staff.html">
+<i class="fas fa-user-tie"></i>
+Staff
+</a>
+
+<a href="settings.html">
+<i class="fas fa-cog"></i>
+Settings
+</a>
+
+<a href="#">
+<i class="fas fa-right-from-bracket"></i>
+Logout
+</a>
+
+</nav>
+
+</aside>
+
+<!-- ================= MAIN ================= -->
+
+<main class="main">
+
+<header class="topbar">
+
+<div>
+
+<h1>Payments</h1>
+
+<small>Manage hotel payments and transactions</small>
+
+</div>
+
+<button class="primary-btn">
+
+<i class="fas fa-plus"></i>
+
+Record Payment
+
+</button>
+
+</header>
+
+<!-- SUMMARY -->
+
+<section class="summary">
+
+<div class="summary-card">
+
+<h3>Today's Revenue</h3>
+
+<h2>₦120,000</h2>
+
+</div>
+
+<div class="summary-card">
+
+<h3>Cash</h3>
+
+<h2>₦40,000</h2>
+
+</div>
+
+<div class="summary-card">
+
+<h3>POS</h3>
+
+<h2>₦35,000</h2>
+
+</div>
+
+<div class="summary-card">
+
+<h3>Transfer</h3>
+
+<h2>₦45,000</h2>
+
+</div>
+
+</section>
+
+<!-- SEARCH & FILTER -->
+
+<section class="filters">
+
+<input
+type="text"
+placeholder="Search receipt, guest or room...">
+
+<select>
+
+<option>All Payment Methods</option>
+
+<option>Cash</option>
+
+<option>POS</option>
+
+<option>Transfer</option>
+
+</select>
+
+<select>
+
+<option>All Status</option>
+
+<option>Paid</option>
+
+<option>Pending</option>
+
+<option>Partial</option>
+
+<option>Refunded</option>
+
+</select>
+
+<input type="date">
+
+</section>
+
+<!-- PAYMENT TABLE -->
+
+<section class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Receipt No.</th>
+
+<th>Guest</th>
+
+<th>Room</th>
+
+<th>Amount</th>
+
+<th>Method</th>
+
+<th>Status</th>
+
+<th>Date</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>RCPT001</td>
+
+<td>John Doe</td>
+
+<td>204</td>
+
+<td>₦25,000</td>
+
+<td>Transfer</td>
+
+<td>
+
+<span class="status available">
+
+Paid
+
+</span>
+
+</td>
+
+<td>29 Jun 2026</td>
+
+<td>
+
+<button>View</button>
+
+<button>Print</button>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>RCPT002</td>
+
+<td>Mary Johnson</td>
+
+<td>102</td>
+
+<td>₦15,000</td>
+
+<td>Cash</td>
+
+<td>
+
+<span class="status occupied">
+
+Partial
+
+</span>
+
+</td>
+
+<td>29 Jun 2026</td>
+
+<td>
+
+<button>View</button>
+
+<button>Collect Balance</button>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>RCPT003</td>
+
+<td>David Smith</td>
+
+<td>305</td>
+
+<td>₦40,000</td>
+
+<td>POS</td>
+
+<td>
+
+<span class="status maintenance">
+
+Pending
+
+</span>
+
+</td>
+
+<td>29 Jun 2026</td>
+
+<td>
+
+<button>View</button>
+
+<button>Pay Now</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+<!-- RECENT TRANSACTIONS -->
+
+<section class="chart-box">
+
+<h2>Recent Transactions</h2>
+
+<p>
+Monitor all hotel payment activities here.
+Charts and analytics can be connected using Chart.js after backend integration.
+</p>
+
+</section>
+
+</main>
+
+</div>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>

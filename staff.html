@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Staff Management | Hotel Management System</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <h2>GREAT GOD GUEST HOUSE</h2>
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                <i class="fas fa-chart-line"></i>
+                Dashboard
+            </a>
+
+            <a href="bookings.html">
+                <i class="fas fa-calendar-check"></i>
+                Bookings
+            </a>
+
+            <a href="rooms.html">
+                <i class="fas fa-bed"></i>
+                Rooms
+            </a>
+
+            <a href="guests.html">
+                <i class="fas fa-users"></i>
+                Guests
+            </a>
+
+            <a href="payments.html">
+                <i class="fas fa-money-bill-wave"></i>
+                Payments
+            </a>
+
+            <a href="reports.html">
+                <i class="fas fa-chart-pie"></i>
+                Reports
+            </a>
+
+            <a href="staff.html" class="active">
+                <i class="fas fa-user-tie"></i>
+                Staff
+            </a>
+
+            <a href="settings.html">
+                <i class="fas fa-cog"></i>
+                Settings
+            </a>
+
+            <a href="#">
+                <i class="fas fa-right-from-bracket"></i>
+                Logout
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>Staff Management</h1>
+
+                <small>Manage hotel employees and user accounts</small>
+
+            </div>
+
+            <button class="primary-btn">
+
+                <i class="fas fa-user-plus"></i>
+
+                Add Staff
+
+            </button>
+
+        </header>
+
+        <!-- SUMMARY CARDS -->
+
+        <section class="summary">
+
+            <div class="summary-card">
+                <h3>Total Staff</h3>
+                <h2>15</h2>
+            </div>
+
+            <div class="summary-card">
+                <h3>Administrators</h3>
+                <h2>2</h2>
+            </div>
+
+            <div class="summary-card">
+                <h3>Managers</h3>
+                <h2>3</h2>
+            </div>
+
+            <div class="summary-card">
+                <h3>Receptionists</h3>
+                <h2>8</h2>
+            </div>
+
+            <div class="summary-card">
+                <h3>Housekeeping</h3>
+                <h2>2</h2>
+            </div>
+
+        </section>
+
+        <!-- SEARCH & FILTERS -->
+
+        <section class="filters">
+
+            <input
+                type="text"
+                placeholder="Search by name, ID or email">
+
+            <select>
+
+                <option>All Roles</option>
+                <option>Administrator</option>
+                <option>Manager</option>
+                <option>Receptionist</option>
+                <option>Housekeeping</option>
+                <option>Accountant</option>
+
+            </select>
+
+            <select>
+
+                <option>All Status</option>
+                <option>Active</option>
+                <option>Inactive</option>
+
+            </select>
+
+        </section>
+
+        <!-- STAFF TABLE -->
+
+        <section class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Full Name</th>
+
+                        <th>Role</th>
+
+                        <th>Phone</th>
+
+                        <th>Email</th>
+
+                        <th>Last Login</th>
+
+                        <th>Status</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>EMP001</td>
+
+                        <td>John Doe</td>
+
+                        <td>Administrator</td>
+
+                        <td>08012345678</td>
+
+                        <td>john@hotel.com</td>
+
+                        <td>Today 09:15 AM</td>
+
+                        <td>
+
+                            <span class="status available">
+
+                                Active
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <button>View</button>
+
+                            <button>Edit</button>
+
+                            <button>Reset Password</button>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>EMP002</td>
+
+                        <td>Mary Johnson</td>
+
+                        <td>Receptionist</td>
+
+                        <td>08087654321</td>
+
+                        <td>mary@hotel.com</td>
+
+                        <td>Yesterday</td>
+
+                        <td>
+
+                            <span class="status available">
+
+                                Active
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <button>View</button>
+
+                            <button>Edit</button>
+
+                            <button>Reset Password</button>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>EMP003</td>
+
+                        <td>David Smith</td>
+
+                        <td>Housekeeping</td>
+
+                        <td>08011223344</td>
+
+                        <td>david@hotel.com</td>
+
+                        <td>3 Days Ago</td>
+
+                        <td>
+
+                            <span class="status maintenance">
+
+                                Inactive
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <button>View</button>
+
+                            <button>Edit</button>
+
+                            <button>Activate</button>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>

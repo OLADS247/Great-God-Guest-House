@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Guests | Hotel Management System</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+<div class="logo">
+<h2>GREAT GOD GUEST HOUSE</h2>
+</div>
+
+<nav>
+
+<a href="index.html">
+<i class="fas fa-chart-line"></i>
+Dashboard
+</a>
+
+<a href="bookings.html">
+<i class="fas fa-calendar-check"></i>
+Bookings
+</a>
+
+<a href="rooms.html">
+<i class="fas fa-bed"></i>
+Rooms
+</a>
+
+<a href="guests.html" class="active">
+<i class="fas fa-users"></i>
+Guests
+</a>
+
+<a href="reports.html">
+<i class="fas fa-chart-pie"></i>
+Reports
+</a>
+
+<a href="settings.html">
+<i class="fas fa-cog"></i>
+Settings
+</a>
+
+</nav>
+
+</aside>
+
+<!-- MAIN -->
+
+<main class="main">
+
+<header class="topbar">
+
+<div>
+
+<h1>Guest Management</h1>
+
+<p>Manage hotel guests and booking history</p>
+
+</div>
+
+<button class="primary-btn">
+
+<i class="fas fa-user-plus"></i>
+
+New Guest
+
+</button>
+
+</header>
+
+<!-- SUMMARY -->
+
+<section class="summary">
+
+<div class="summary-card">
+<h3>Total Guests</h3>
+<h2>254</h2>
+</div>
+
+<div class="summary-card">
+<h3>Active Guests</h3>
+<h2>18</h2>
+</div>
+
+<div class="summary-card">
+<h3>Checked Out Today</h3>
+<h2>7</h2>
+</div>
+
+<div class="summary-card">
+<h3>Returning Guests</h3>
+<h2>46</h2>
+</div>
+
+</section>
+
+<!-- SEARCH -->
+
+<section class="filters">
+
+<input
+type="text"
+placeholder="Search by guest name, phone or room number...">
+
+<select>
+
+<option>All Guests</option>
+<option>Active</option>
+<option>Checked Out</option>
+
+</select>
+
+</section>
+
+<!-- GUEST TABLE -->
+
+<section class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Guest Name</th>
+
+<th>Phone</th>
+
+<th>Room</th>
+
+<th>Room Type</th>
+
+<th>Check In</th>
+
+<th>Check Out</th>
+
+<th>Status</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>John Doe</td>
+
+<td>08012345678</td>
+
+<td>204</td>
+
+<td>Deluxe</td>
+
+<td>29/06/2026</td>
+
+<td>01/07/2026</td>
+
+<td>
+
+<span class="status occupied">
+
+Checked In
+
+</span>
+
+</td>
+
+<td>
+
+<button>View</button>
+
+<button>Edit</button>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>Mary Johnson</td>
+
+<td>08087654321</td>
+
+<td>102</td>
+
+<td>Standard</td>
+
+<td>28/06/2026</td>
+
+<td>29/06/2026</td>
+
+<td>
+
+<span class="status available">
+
+Checked Out
+
+</span>
+
+</td>
+
+<td>
+
+<button>View</button>
+
+<button>Edit</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+</main>
+
+</div>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>

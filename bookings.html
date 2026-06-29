@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bookings | Hotel Management System</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!---------------- SIDEBAR ---------------->
+
+<aside class="sidebar">
+
+<div class="logo">
+<h2>GREAT GOD GUEST HOUSE</h2>
+</div>
+
+<nav></nav>
+
+<a href="index.html">
+<i class="fas fa-chart-line"></i>
+Dashboard
+</a>
+
+<a href="bookings.html" class="active">
+<i class="fas fa-calendar-check"></i>
+Bookings
+</a>
+
+<a href="rooms.html">
+<i class="fas fa-bed"></i>
+Rooms
+</a>
+
+<a href="guests.html">
+<i class="fas fa-users"></i>
+Guests
+</a>
+
+<a href="reports.html">
+<i class="fas fa-chart-pie"></i>
+Reports
+</a>
+
+<a href="settings.html">
+<i class="fas fa-gear"></i>
+Settings
+</a>
+
+</nav>
+
+</aside>
+
+<!---------------- MAIN ---------------->
+
+<main class="main">
+
+<header class="topbar">
+
+<h1>Bookings</h1>
+
+<div class="profile">
+<i class="fas fa-bell"></i>
+<span>Receptionist</span>
+</div>
+
+</header>
+
+<!---------------- BOOKING FORM ---------------->
+
+<section class="booking-form">
+
+<h2>New Booking</h2>
+
+<form id="bookingForm"
+action="https://formsubmit.co/lwfmolaleye@gmail.com"
+method="POST">
+
+<!-- FORM SETTINGS -->
+<input type="hidden" name="_subject" value="New Hotel Booking Received">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_template" value="table">
+
+<div class="grid">
+
+<div>
+<label>Guest Name</label>
+<input type="text" id="guestName" name="GuestName" required>
+</div>
+
+<div>
+<label>Phone Number</label>
+<input type="text" id="phoneNumber" name="PhoneNumber" required>
+</div>
+
+<div>
+<label>Room Type</label>
+<select id="roomType" name="RoomType" required>
+<option>Standard</option>
+<option>Deluxe</option>
+<option>Executive</option>
+<option>Suite</option>
+</select>
+</div>
+
+<div>
+<label>Available Room</label>
+<select id="roomNumber" name="RoomName" required>
+<option>Excellence</option>
+<option>Elegance</option>
+<option>Sapphire</option>
+<option>GOLD</option>
+<option>Emerald</option>
+<option>Amazing</option>
+<option>Comfort</option>
+<option>Diamond</option>
+<option>Awesome</option>
+<option>Californium</option>
+</select>
+</div>
+
+<div>
+<label>Check In</label>
+<input type="date" id="checkIn" name="CheckIn" required>
+</div>
+
+<div>
+<label>Intended Check Out Date</label>
+<input type="date" id="checkOut" name="Intended CheckOut Date" required>
+</div>
+
+<div>
+<label>Payment Method</label>
+<select id="paymentMethod" name="PaymentMethod" required>
+<option>Cash</option>
+<option>POS</option>
+<option>Transfer</option>
+</select>
+</div>
+
+<div>
+<label>Amount</label>
+<select id="amount" name="amount" required>
+<option value="5000">30,000</option>
+<option value="10000">35,000</option>
+<!-- <option value="15000">15000</option>
+<option value="20000">20000</option> -->
+</select>
+</div>
+
+</div>
+
+<button type="submit" class="primary-btn">
+Book Room
+</button>
+
+</form>
+
+</section>
+
+<!---------------- SUMMARY ---------------->
+
+<section class="summary">
+
+<div class="summary-card">
+<h3>Today's Bookings</h3>
+<h2>0</h2>
+</div>
+
+<div class="summary-card">
+<h3>Checked In</h3>
+<h2>0</h2>
+</div>
+
+<div class="summary-card">
+<h3>Checked Out</h3>
+<h2>0</h2>
+</div>
+
+</section>
+
+<!---------------- SEARCH ---------------->
+
+<section class="search-box">
+
+<input type="text" id="bookingSearch"
+placeholder="Search guest, room number or phone...">
+
+</section>
+
+<!---------------- BOOKINGS TABLE ---------------->
+
+<section class="table-container">
+
+<table id="dataTable">
+
+<thead>
+<tr>
+<th>Guest</th>
+<th>Phone</th>
+<th>Room</th>
+<th>Type</th>
+<th>Amount</th>
+<th>Check In</th>
+<th>Check Out</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+</section>
+
+</main>
+
+</div>
+
+<script src="js/app.js"></script>
+
+<!-- ================= FIXED LOGIC ================= -->
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const form = document.getElementById("bookingForm");
+    const tableBody = document.querySelector("#dataTable tbody");
+
+    // LOAD SAVED BOOKINGS
+    const saved = JSON.parse(localStorage.getItem("bookings") || "[]");
+
+    saved.forEach(b => {
+        addRow(b);
+    });
+
+    function addRow(data) {
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td>${data.guest}</td>
+            <td>${data.phone}</td>
+            <td>${data.room}</td>
+            <td>${data.type}</td>
+            <td>${data.amount}</td>
+            <td>${data.checkIn}</td>
+            <td>${data.checkOut}</td>
+            <td><span style="color:green">Confirmed</span></td>
+            <td><button onclick="this.closest('tr').remove()">Delete</button></td>
+        `;
+
+        tableBody.appendChild(row);
+    }
+
+    form.addEventListener("submit", function() {
+
+        const booking = {
+            guest: document.getElementById("guestName").value,
+            phone: document.getElementById("phoneNumber").value,
+            room: document.getElementById("roomNumber").value,
+            type: document.getElementById("roomType").value,
+            checkIn: document.getElementById("checkIn").value,
+            checkOut: document.getElementById("checkOut").value,
+            amount: document.getElementById("amount").value
+        };
+
+        // SAVE TO LOCAL STORAGE
+        const bookings = JSON.parse(localStorage.getItem("bookings") || "[]");
+        bookings.push(booking);
+        localStorage.setItem("bookings", JSON.stringify(bookings));
+
+        // ADD TO TABLE
+        addRow(booking);
+
+        alert("Booking saved + email sent!");
+
+        // Let FormSubmit still run normally (NO preventDefault)
+
+    });
+
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Rooms | Hotel Management System</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+<div class="logo">
+
+<h2>GREAT GOD GUEST HOUSE</h2>
+
+</div>
+
+<nav>
+
+<a href="index.html">
+<i class="fas fa-chart-line"></i>
+Dashboard
+</a>
+
+<a href="bookings.html">
+<i class="fas fa-calendar-check"></i>
+Bookings
+</a>
+
+<a href="rooms.html" class="active">
+<i class="fas fa-bed"></i>
+Rooms
+</a>
+
+<a href="guests.html">
+<i class="fas fa-users"></i>
+Guests
+</a>
+
+<a href="reports.html">
+<i class="fas fa-chart-pie"></i>
+Reports
+</a>
+
+<a href="settings.html">
+<i class="fas fa-cog"></i>
+Settings
+</a>
+
+</nav>
+
+</aside>
+
+<!-- ================= MAIN ================= -->
+
+<main class="main">
+
+<header class="topbar">
+
+<div>
+
+<h1>Room Management</h1>
+
+<p>Manage hotel rooms and availability</p>
+
+</div>
+
+<button class="primary-btn">
+
+<i class="fas fa-plus"></i>
+
+Add Room
+
+</button>
+
+</header>
+
+<!-- ================= ROOM SUMMARY ================= -->
+
+<section class="summary">
+
+<div class="summary-card">
+
+<h3>Total Rooms</h3>
+
+<h2>40</h2>
+
+</div>
+
+<div class="summary-card">
+
+<h3>Available</h3>
+
+<h2>28</h2>
+
+</div>
+
+<div class="summary-card">
+
+<h3>Occupied</h3>
+
+<h2>10</h2>
+
+</div>
+
+<div class="summary-card">
+
+<h3>Maintenance</h3>
+
+<h2>2</h2>
+
+</div>
+
+</section>
+
+<!-- ================= FILTERS ================= -->
+
+<section class="filters">
+
+<input
+type="text"
+placeholder="Search room number...">
+
+<select>
+
+<option>All Types</option>
+
+<option>Standard</option>
+
+<option>Deluxe</option>
+
+<option>Executive</option>
+
+<option>Suite</option>
+
+</select>
+
+<select>
+
+<option>All Status</option>
+
+<option>Available</option>
+
+<option>Occupied</option>
+
+<option>Reserved</option>
+
+<option>Maintenance</option>
+
+</select>
+
+</section>
+
+<!-- ================= ROOMS TABLE ================= -->
+
+<section class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Room No.</th>
+
+<th>Room Type</th>
+
+<th>Price</th>
+
+<th>Status</th>
+
+<th>Floor</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>101</td>
+
+<td>Standard</td>
+
+<td>₦5,000</td>
+
+<td>
+
+<span class="status available">
+
+Available
+
+</span>
+
+</td>
+
+<td>1st Floor</td>
+
+<td>
+
+<button>Edit</button>
+
+<button>Delete</button>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>201</td>
+
+<td>Deluxe</td>
+
+<td>₦8,000</td>
+
+<td>
+
+<span class="status occupied">
+
+Occupied
+
+</span>
+
+</td>
+
+<td>2nd Floor</td>
+
+<td>
+
+<button>Edit</button>
+
+<button>Delete</button>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>301</td>
+
+<td>Executive</td>
+
+<td>₦12,000</td>
+
+<td>
+
+<span class="status maintenance">
+
+Maintenance
+
+</span>
+
+</td>
+
+<td>3rd Floor</td>
+
+<td>
+
+<button>Edit</button>
+
+<button>Delete</button>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>401</td>
+
+<td>Suite</td>
+
+<td>₦20,000</td>
+
+<td>
+
+<span class="status reserved">
+
+Reserved
+
+</span>
+
+</td>
+
+<td>4th Floor</td>
+
+<td>
+
+<button>Edit</button>
+
+<button>Delete</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+</main>
+
+</div>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>

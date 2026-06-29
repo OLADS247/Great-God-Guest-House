@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Settings | Hotel Management System</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+<div class="logo">
+
+<h2>GREAT GOD GUEST HOUSE</h2>
+
+</div>
+
+<nav>
+
+<a href="index.html">
+<i class="fas fa-chart-line"></i>
+Dashboard
+</a>
+
+<a href="bookings.html">
+<i class="fas fa-calendar-check"></i>
+Bookings
+</a>
+
+<a href="rooms.html">
+<i class="fas fa-bed"></i>
+Rooms
+</a>
+
+<a href="guests.html">
+<i class="fas fa-users"></i>
+Guests
+</a>
+
+<a href="reports.html">
+<i class="fas fa-chart-pie"></i>
+Reports
+</a>
+
+<a href="settings.html" class="active">
+<i class="fas fa-cog"></i>
+Settings
+</a>
+
+</nav>
+
+</aside>
+
+<!-- MAIN -->
+
+<main class="main">
+
+<header class="topbar">
+
+<h1>System Settings</h1>
+
+<p>Manage hotel information and application settings.</p>
+
+</header>
+
+<!-- HOTEL INFORMATION -->
+
+<section class="settings-card">
+
+<h2>Hotel Information</h2>
+
+<div class="grid">
+
+<div>
+
+<label>Hotel Name</label>
+
+<input type="text" value="Royal Palace Hotel">
+
+</div>
+
+<div>
+
+<label>Phone Number</label>
+
+<input type="text">
+
+</div>
+
+<div>
+
+<label>Email Address</label>
+
+<input type="email">
+
+</div>
+
+<div>
+
+<label>Hotel Address</label>
+
+<input type="text">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CURRENCY -->
+
+<section class="settings-card">
+
+<h2>Business Settings</h2>
+
+<div class="grid">
+
+<div>
+
+<label>Currency</label>
+
+<select>
+
+<option>Nigerian Naira (₦)</option>
+
+<option>US Dollar ($)</option>
+
+<option>British Pound (£)</option>
+
+</select>
+
+</div>
+
+<div>
+
+<label>Default Check-In Time</label>
+
+<input type="time">
+
+</div>
+
+<div>
+
+<label>Default Check-Out Time</label>
+
+<input type="time">
+
+</div>
+
+<div>
+
+<label>Tax (%)</label>
+
+<input type="number">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- USER MANAGEMENT -->
+
+<section class="settings-card">
+
+<h2>User Management</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Name</th>
+
+<th>Role</th>
+
+<th>Status</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>Admin</td>
+
+<td>Administrator</td>
+
+<td>Active</td>
+
+<td>
+
+<button>Edit</button>
+
+<button>Disable</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+<!-- BACKUP -->
+
+<section class="settings-card">
+
+<h2>Database</h2>
+
+<button class="primary-btn">
+
+<i class="fas fa-download"></i>
+
+Backup Database
+
+</button>
+
+<button class="primary-btn">
+
+<i class="fas fa-upload"></i>
+
+Restore Backup
+
+</button>
+
+</section>
+
+<!-- SAVE -->
+
+<section>
+
+<button class="primary-btn">
+
+Save Settings
+
+</button>
+
+</section>
+
+</main>
+
+</div>
+
+<script src="js/app.js"></script>
+
+</body>
+
+</html>
