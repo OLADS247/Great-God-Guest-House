@@ -78,7 +78,6 @@ Settings
 </header>
 
 <!---------------- BOOKING FORM ---------------->
-
 <section class="booking-form">
 
 <h2>New Booking</h2>
@@ -87,7 +86,6 @@ Settings
 action="https://formsubmit.co/lwfmolaleye@gmail.com"
 method="POST">
 
-<!-- FORM SETTINGS -->
 <input type="hidden" name="_subject" value="New Hotel Booking Received">
 <input type="hidden" name="_captcha" value="false">
 <input type="hidden" name="_template" value="table">
@@ -137,7 +135,7 @@ method="POST">
 
 <div>
 <label>Intended Check Out Date</label>
-<input type="date" id="checkOut" name="Intended CheckOut Date" required>
+<input type="date" id="checkOut" name="IntendedCheckOutDate" required>
 </div>
 
 <div>
@@ -151,59 +149,58 @@ method="POST">
 
 <div>
 <label>Amount</label>
-<select id="amount" name="amount" required>
-<option value="30,000">30,000</option>
-<option value="35,000">35,000</option>
-<!-- <option value="15000">15000</option>
-<option value="20000">20000</option> -->
+<select id="amount" name="Amount" required>
+<option value="30000">₦30,000</option>
+<option value="35000">₦35,000</option>
 </select>
 </div>
 
 <div>
-    <label>Identification Type</label>
-    <select id="idType" name="IdentificationType" required>
-        <option value="" selected disabled>Select Identification</option>
-        <option value="National Identification Number (NIN)">National Identification Number (NIN)</option>
-        <option value="National ID Card">National ID Card</option>
-        <option value="International Passport">International Passport</option>
-        <option value="Driver's License">Driver's License</option>
-        <option value="Voter's Card">Voter's Card</option>
-        <option value="Residence Permit">Residence Permit</option>
-        <option value="Student ID">Student ID</option>
-        <option value="Employee ID">Employee ID</option>
-        <option value="Other">Other</option>
-    </select>
+<label>Identification Type</label>
+<select id="idType" name="IdentificationType" required>
+<option value="" selected disabled>Select Identification</option>
+<option value="National Identification Number (NIN)">National Identification Number (NIN)</option>
+<option value="National ID Card">National ID Card</option>
+<option value="International Passport">International Passport</option>
+<option value="Driver's License">Driver's License</option>
+<option value="Voter's Card">Voter's Card</option>
+<option value="Residence Permit">Residence Permit</option>
+<option value="Student ID">Student ID</option>
+<option value="Employee ID">Employee ID</option>
+<option value="Other">Other</option>
+</select>
 </div>
 
 <div>
-    <label>Identification Number</label>
-    <input
-        type="text"
-        id="idNumber"
-        name="IdentificationNumber"
-        placeholder="Enter Identification Number"
-        required>
+<label>Identification Number</label>
+<input
+type="text"
+id="idNumber"
+name="IdentificationNumber"
+placeholder="Enter Identification Number"
+required>
 </div>
 
 <div>
-    <label>Receipt ID</label>
-    <input
-        type="text"
-        id="receiptId"
-        name="ReceiptID"
-        placeholder="e.g. RCP-2026-000145"
-        required>
+<label>Receipt ID</label>
+<input
+type="text"
+id="receiptId"
+name="ReceiptID"
+placeholder="e.g. RCP-2026-000145"
+required>
 </div>
 
 <div>
-    <label>Today's Date</label>
-    <input
-        type="date"
-        id="dateFilled"
-        name="DateFilled"
-        required>
+<label>Today's Date</label>
+<input
+type="date"
+id="dateFilled"
+name="DateFilled"
+readonly
+required>
 </div>
-    
+
 </div>
 
 <button type="submit" class="primary-btn">
@@ -214,27 +211,12 @@ Book Room
 
 </section>
 
-<!---------------- SUMMARY ---------------->
-
-<section class="summary">
-
-<div class="summary-card">
-<h3>Today's Bookings</h3>
-<h2>0</h2>
-</div>
-
-<div class="summary-card">
-<h3>Checked In</h3>
-<h2>0</h2>
-</div>
-
-<div class="summary-card">
-<h3>Checked Out</h3>
-<h2>0</h2>
-</div>
-
-</section>
-
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("dateFilled").value =
+        new Date().toISOString().split("T")[0];
+});
+</script>
 <!---------------- SEARCH ---------------->
 
 <section class="search-box">
