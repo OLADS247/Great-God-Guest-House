@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,6 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <style>
-    /* Quick inline styles for table actions */
     .action-btn {
         padding: 5px 10px;
         margin: 0 3px;
@@ -17,38 +17,23 @@
     }
     .edit-btn { background: #007bff; color: white; }
     .delete-btn { background: #dc3545; color: white; }
+    .success { color: green; font-weight: bold; }
 </style>
 </head>
 <body>
 <div class="container">
-    <!-- SIDEBAR -->
     <aside class="sidebar">
-        <div class="logo">
-            <h2>GREAT GOD GUEST HOUSE</h2>
-        </div>
+        <div class="logo"><h2>GREAT GOD GUEST HOUSE</h2></div>
         <nav>
-            <a href="index.html">
-                <i class="fas fa-chart-line"></i> Dashboard
-            </a>
-            <a href="bookings.html" class="active">
-                <i class="fas fa-calendar-check"></i> Bookings
-            </a>
-            <a href="rooms.html">
-                <i class="fas fa-bed"></i> Rooms
-            </a>
-            <a href="guests.html">
-                <i class="fas fa-users"></i> Guests
-            </a>
-            <a href="reports.html">
-                <i class="fas fa-chart-pie"></i> Reports
-            </a>
-            <a href="settings.html">
-                <i class="fas fa-gear"></i> Settings
-            </a>
+            <a href="index.html"><i class="fas fa-chart-line"></i> Dashboard</a>
+            <a href="bookings.html" class="active"><i class="fas fa-calendar-check"></i> Bookings</a>
+            <a href="rooms.html"><i class="fas fa-bed"></i> Rooms</a>
+            <a href="guests.html"><i class="fas fa-users"></i> Guests</a>
+            <a href="reports.html"><i class="fas fa-chart-pie"></i> Reports</a>
+            <a href="settings.html"><i class="fas fa-gear"></i> Settings</a>
         </nav>
     </aside>
 
-    <!-- MAIN -->
     <main class="main">
         <header class="topbar">
             <h1>Bookings</h1>
@@ -58,26 +43,14 @@
             </div>
         </header>
 
-        <!-- BOOKING FORM -->
         <section class="booking-form">
             <h2>New Booking</h2>
-            <form id="bookingForm" action="https://formsubmit.co/lwfmolaleye@gmail.com" method="POST">
-                <input type="hidden" name="_subject" value="New Hotel Booking Received">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="table">
-
+            <form id="bookingForm">
                 <div class="grid">
-                    <div>
-                        <label>Guest Name</label>
-                        <input type="text" id="guestName" name="GuestName" required>
-                    </div>
-                    <div>
-                        <label>Phone Number</label>
-                        <input type="text" id="phoneNumber" name="PhoneNumber" required>
-                    </div>
-                    <div>
-                        <label>Room Type</label>
-                        <select id="roomType" name="RoomType" required>
+                    <div><label>Guest Name</label><input type="text" id="guestName" required></div>
+                    <div><label>Phone Number</label><input type="text" id="phoneNumber" required></div>
+                    <div><label>Room Type</label>
+                        <select id="roomType" required>
                             <option value="">Select Type</option>
                             <option>Standard</option>
                             <option>Deluxe</option>
@@ -85,9 +58,8 @@
                             <option>Suite</option>
                         </select>
                     </div>
-                    <div>
-                        <label>Room</label>
-                        <select id="roomNumber" name="RoomName" required>
+                    <div><label>Room</label>
+                        <select id="roomNumber" required>
                             <option value="">Select Room</option>
                             <option>Excellence</option>
                             <option>Elegance</option>
@@ -101,35 +73,26 @@
                             <option>Californium</option>
                         </select>
                     </div>
-                    <div>
-                        <label>Check In</label>
-                        <input type="date" id="checkIn" name="CheckIn" required>
-                    </div>
-                    <div>
-                        <label>Intended Check Out</label>
-                        <input type="date" id="checkOut" name="IntendedCheckOutDate" required>
-                    </div>
-                    <div>
-                        <label>Payment Method</label>
-                        <select id="paymentMethod" name="PaymentMethod" required>
+                    <div><label>Check In</label><input type="date" id="checkIn" required></div>
+                    <div><label>Intended Check Out</label><input type="date" id="checkOut" required></div>
+                    <div><label>Payment Method</label>
+                        <select id="paymentMethod" required>
                             <option value="">Select</option>
                             <option>Cash</option>
                             <option>POS</option>
                             <option>Transfer</option>
                         </select>
                     </div>
-                    <div>
-                        <label>Amount (₦)</label>
-                        <select id="amount" name="Amount" required>
+                    <div><label>Amount (₦)</label>
+                        <select id="amount" required>
                             <option value="30000">30,000</option>
                             <option value="35000">35,000</option>
                             <option value="40000">40,000</option>
                             <option value="50000">50,000</option>
                         </select>
                     </div>
-                    <div>
-                        <label>ID Type</label>
-                        <select id="idType" name="IdentificationType" required>
+                    <div><label>ID Type</label>
+                        <select id="idType" required>
                             <option value="" selected disabled>Select Identification</option>
                             <option value="National Identification Number (NIN)">NIN</option>
                             <option value="National ID Card">National ID Card</option>
@@ -142,30 +105,24 @@
                             <option value="Other">Other</option>
                         </select>
                     </div>
-                    <div>
-                        <label>ID Number</label>
-                        <input type="text" id="idNumber" name="IdentificationNumber" placeholder="Enter ID Number" required>
+                    <div><label>ID Number</label>
+                        <input type="text" id="idNumber" placeholder="Enter Identification Number" required>
                     </div>
-                    <div>
-                        <label>Receipt ID</label>
-                        <input type="text" id="receiptId" name="ReceiptID" placeholder="e.g. RCP-2026-000145" required>
+                    <div><label>Receipt ID</label>
+                        <input type="text" id="receiptId" placeholder="e.g. RCP-2026-000145" required>
                     </div>
-                    <div>
-                        <label>Date Filled</label>
-                        <input type="date" id="dateFilled" name="DateFilled" readonly>
+                    <div><label>Date Filled</label>
+                        <input type="date" id="dateFilled" readonly>
                     </div>
                 </div>
-
                 <button type="submit" class="primary-btn">Book Room</button>
             </form>
         </section>
 
-        <!-- SEARCH -->
         <section class="search-box">
             <input type="text" id="bookingSearch" placeholder="Search by guest, room, or phone...">
         </section>
 
-        <!-- TABLE -->
         <section class="table-container">
             <table id="dataTable">
                 <thead>
@@ -194,7 +151,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.getElementById("bookingSearch");
     let bookings = JSON.parse(localStorage.getItem("bookings") || "[]");
 
-    // Set today's date
     document.getElementById("dateFilled").value = new Date().toISOString().split("T")[0];
 
     function renderTable(filteredBookings = bookings) {
@@ -206,10 +162,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 <td>${booking.phone}</td>
                 <td>${booking.room}</td>
                 <td>${booking.type}</td>
-                <td>₦${parseInt(booking.amount).toLocaleString()}</td>
+                <td>₦${parseInt(booking.amount || 0).toLocaleString()}</td>
                 <td>${booking.checkIn}</td>
                 <td>${booking.checkOut}</td>
-                <td><span style="color:green; font-weight:bold;">Confirmed</span></td>
+                <td><span class="success">Confirmed</span></td>
                 <td>
                     <button class="action-btn edit-btn" data-index="${index}">Edit</button>
                     <button class="action-btn delete-btn" data-index="${index}">Delete</button>
@@ -219,8 +175,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Add new booking
     form.addEventListener("submit", function(e) {
+        e.preventDefault();
+
         const booking = {
             guest: document.getElementById("guestName").value,
             phone: document.getElementById("phoneNumber").value,
@@ -231,47 +188,47 @@ document.addEventListener("DOMContentLoaded", () => {
             amount: document.getElementById("amount").value,
             idType: document.getElementById("idType").value,
             idNumber: document.getElementById("idNumber").value,
-            receiptId: document.getElementById("receiptId").value
+            receiptId: document.getElementById("receiptId").value,
+            dateFilled: document.getElementById("dateFilled").value
         };
 
         bookings.push(booking);
         localStorage.setItem("bookings", JSON.stringify(bookings));
+        
         renderTable();
+        form.reset();
+        document.getElementById("dateFilled").value = new Date().toISOString().split("T")[0];
 
-        alert("✅ Booking saved successfully! Email notification sent.");
-        // FormSubmit will handle the email
+        alert("✅ Booking saved successfully!");
     });
 
-    // Search functionality
+    // Search
     searchInput.addEventListener("input", () => {
-        const term = searchInput.value.toLowerCase();
+        const term = searchInput.value.toLowerCase().trim();
         const filtered = bookings.filter(b => 
             b.guest.toLowerCase().includes(term) ||
-            b.phone.includes(term) ||
-            b.room.toLowerCase().includes(term)
+            (b.phone && b.phone.includes(term)) ||
+            (b.room && b.room.toLowerCase().includes(term)) ||
+            (b.receiptId && b.receiptId.toLowerCase().includes(term))
         );
         renderTable(filtered);
     });
 
-    // Event delegation for Edit & Delete
+    // Delete & Edit
     tableBody.addEventListener("click", (e) => {
         if (e.target.classList.contains("delete-btn")) {
-            const index = parseInt(e.target.dataset.index);
             if (confirm("Delete this booking?")) {
+                const index = parseInt(e.target.dataset.index);
                 bookings.splice(index, 1);
                 localStorage.setItem("bookings", JSON.stringify(bookings));
                 renderTable();
             }
         }
         if (e.target.classList.contains("edit-btn")) {
-            const index = parseInt(e.target.dataset.index);
-            const b = bookings[index];
-            // Simple alert for now - you can expand this into a modal later
-            alert(`Edit functionality for ${b.guest} coming soon!`);
+            alert("Edit feature coming soon!");
         }
     });
 
-    // Initial render
     renderTable();
 });
 </script>
