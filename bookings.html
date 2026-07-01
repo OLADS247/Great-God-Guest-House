@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +17,7 @@
     .edit-btn { background: #007bff; color: white; }
     .delete-btn { background: #dc3545; color: white; }
     .success { color: green; font-weight: bold; }
+    .details-btn { background: #17a2b8; color: white; }
 </style>
 </head>
 <body>
@@ -49,48 +49,31 @@
                 <div class="grid">
                     <div><label>Guest Name</label><input type="text" id="guestName" required></div>
                     <div><label>Phone Number</label><input type="text" id="phoneNumber" required></div>
-                    <div><label>Room Type</label>
-                        <select id="roomType" required>
-                            <option value="">Select Type</option>
-                            <option>Standard</option>
-                            <option>Deluxe</option>
-                            <option>Executive</option>
-                            <option>Suite</option>
-                        </select>
-                    </div>
-                    <div><label>Room</label>
-                        <select id="roomNumber" required>
-                            <option value="">Select Room</option>
-                            <option>Excellence</option>
-                            <option>Elegance</option>
-                            <option>Sapphire</option>
-                            <option>GOLD</option>
-                            <option>Emerald</option>
-                            <option>Amazing</option>
-                            <option>Comfort</option>
-                            <option>Diamond</option>
-                            <option>Awesome</option>
-                            <option>Californium</option>
-                        </select>
-                    </div>
+                    <div><label>Room Type</label><select id="roomType" required>
+                        <option value="">Select Type</option>
+                        <option>Standard</option><option>Deluxe</option>
+                        <option>Executive</option><option>Suite</option>
+                    </select></div>
+                    <div><label>Room</label><select id="roomNumber" required>
+                        <option value="">Select Room</option>
+                        <option>Excellence</option><option>Elegance</option>
+                        <option>Sapphire</option><option>GOLD</option>
+                        <option>Emerald</option><option>Amazing</option>
+                        <option>Comfort</option><option>Diamond</option>
+                        <option>Awesome</option><option>Californium</option>
+                    </select></div>
                     <div><label>Check In</label><input type="date" id="checkIn" required></div>
                     <div><label>Intended Check Out</label><input type="date" id="checkOut" required></div>
-                    <div><label>Payment Method</label>
-                        <select id="paymentMethod" required>
-                            <option value="">Select</option>
-                            <option>Cash</option>
-                            <option>POS</option>
-                            <option>Transfer</option>
-                        </select>
-                    </div>
-                    <div><label>Amount (₦)</label>
-                        <select id="amount" required>
-                            <option value="30000">30,000</option>
-                            <option value="35000">35,000</option>
-                            <option value="40000">40,000</option>
-                            <option value="50000">50,000</option>
-                        </select>
-                    </div>
+                    <div><label>Payment Method</label><select id="paymentMethod" required>
+                        <option value="">Select</option>
+                        <option>Cash</option><option>POS</option><option>Transfer</option>
+                    </select></div>
+                    <div><label>Amount (₦)</label><select id="amount" required>
+                        <option value="30000">30,000</option>
+                        <option value="35000">35,000</option>
+                        <option value="40000">40,000</option>
+                        <option value="50000">50,000</option>
+                    </select></div>
                     <div><label>ID Type</label>
                         <select id="idType" required>
                             <option value="" selected disabled>Select Identification</option>
@@ -105,15 +88,9 @@
                             <option value="Other">Other</option>
                         </select>
                     </div>
-                    <div><label>ID Number</label>
-                        <input type="text" id="idNumber" placeholder="Enter Identification Number" required>
-                    </div>
-                    <div><label>Receipt ID</label>
-                        <input type="text" id="receiptId" placeholder="e.g. RCP-2026-000145" required>
-                    </div>
-                    <div><label>Date Filled</label>
-                        <input type="date" id="dateFilled" readonly>
-                    </div>
+                    <div><label>ID Number</label><input type="text" id="idNumber" placeholder="Enter ID Number" required></div>
+                    <div><label>Receipt ID</label><input type="text" id="receiptId" placeholder="e.g. RCP-2026-000145" required></div>
+                    <div><label>Date Filled</label><input type="date" id="dateFilled" readonly></div>
                 </div>
                 <button type="submit" class="primary-btn">Book Room</button>
             </form>
@@ -167,6 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <td>${booking.checkOut}</td>
                 <td><span class="success">Confirmed</span></td>
                 <td>
+                    <button class="action-btn details-btn" data-index="${index}">Details</button>
                     <button class="action-btn edit-btn" data-index="${index}">Edit</button>
                     <button class="action-btn delete-btn" data-index="${index}">Delete</button>
                 </td>
@@ -199,23 +177,26 @@ document.addEventListener("DOMContentLoaded", () => {
         form.reset();
         document.getElementById("dateFilled").value = new Date().toISOString().split("T")[0];
 
-        alert("✅ Booking saved successfully!");
+        alert("✅ Booking saved successfully! All details (NIN & Receipt ID) recorded.");
     });
 
-    // Search
-    searchInput.addEventListener("input", () => {
-        const term = searchInput.value.toLowerCase().trim();
-        const filtered = bookings.filter(b => 
-            b.guest.toLowerCase().includes(term) ||
-            (b.phone && b.phone.includes(term)) ||
-            (b.room && b.room.toLowerCase().includes(term)) ||
-            (b.receiptId && b.receiptId.toLowerCase().includes(term))
-        );
-        renderTable(filtered);
-    });
-
-    // Delete & Edit
+    // Show Full Details
     tableBody.addEventListener("click", (e) => {
+        if (e.target.classList.contains("details-btn")) {
+            const index = parseInt(e.target.dataset.index);
+            const b = bookings[index];
+            alert(`
+Guest: ${b.guest}
+Phone: ${b.phone}
+Room: ${b.room} (${b.type})
+Check-In: ${b.checkIn} | Check-Out: ${b.checkOut}
+Amount: ₦${parseInt(b.amount).toLocaleString()}
+ID Type: ${b.idType}
+ID Number: ${b.idNumber}
+Receipt ID: ${b.receiptId}
+Date Filled: ${b.dateFilled}
+            `);
+        }
         if (e.target.classList.contains("delete-btn")) {
             if (confirm("Delete this booking?")) {
                 const index = parseInt(e.target.dataset.index);
@@ -224,9 +205,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 renderTable();
             }
         }
-        if (e.target.classList.contains("edit-btn")) {
-            alert("Edit feature coming soon!");
-        }
+    });
+
+    // Search
+    searchInput.addEventListener("input", () => {
+        const term = searchInput.value.toLowerCase().trim();
+        const filtered = bookings.filter(b => 
+            (b.guest && b.guest.toLowerCase().includes(term)) ||
+            (b.phone && b.phone.includes(term)) ||
+            (b.room && b.room.toLowerCase().includes(term)) ||
+            (b.receiptId && b.receiptId.toLowerCase().includes(term))
+        );
+        renderTable(filtered);
     });
 
     renderTable();
