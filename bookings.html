@@ -20,7 +20,6 @@
     .success { color: green; font-weight: bold; }
     .table-container { overflow-x: auto; }
     table th, table td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
-
     /* Modal */
     .modal {
         display: none;
@@ -68,7 +67,6 @@
             <a href="settings.html"><i class="fas fa-gear"></i> Settings</a>
         </nav>
     </aside>
-
     <main class="main">
         <header class="topbar">
             <h1>Bookings</h1>
@@ -77,11 +75,9 @@
                 <span>Receptionist</span>
             </div>
         </header>
-
         <button class="report-btn" id="reportBtn">
             <i class="fas fa-chart-bar"></i> Generate Monthly Report
         </button>
-
         <!-- BOOKING FORM -->
         <section class="booking-form">
             <h2>New Booking</h2>
@@ -89,7 +85,6 @@
                 <input type="hidden" name="_subject" value="New Hotel Booking Received">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_template" value="table">
-
                 <div class="grid">
                     <div><label>Guest Name</label><input type="text" id="guestName" name="GuestName" required></div>
                     <div><label>Phone Number</label><input type="text" id="phoneNumber" name="PhoneNumber" required></div>
@@ -162,12 +157,10 @@
                 <button type="submit" class="primary-btn">Book Room</button>
             </form>
         </section>
-
         <!-- SEARCH -->
         <section class="search-box">
             <input type="text" id="bookingSearch" placeholder="Search by guest, room, or phone...">
         </section>
-
         <!-- TABLE -->
         <section class="table-container">
             <table id="dataTable">
@@ -193,7 +186,6 @@
         </section>
     </main>
 </div>
-
 <!-- REPORT MODAL -->
 <div id="reportModal" class="modal">
     <div class="modal-content">
@@ -202,14 +194,12 @@
         <div id="reportBody"></div>
     </div>
 </div>
-
 <script>
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("bookingForm");
     const tableBody = document.querySelector("#dataTable tbody");
     const searchInput = document.getElementById("bookingSearch");
     let bookings = JSON.parse(localStorage.getItem("bookings") || "[]");
-
     // Auto cleanup older than 30 days
     function cleanupOldBookings() {
         const now = Date.now();
@@ -220,10 +210,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         localStorage.setItem("bookings", JSON.stringify(bookings));
     }
-
     // Set today's date
     document.getElementById("dateFilled").value = new Date().toISOString().split("T")[0];
-
     function renderTable(filteredBookings = bookings) {
         tableBody.innerHTML = "";
         filteredBookings.forEach((booking, index) => {
@@ -249,11 +237,9 @@ document.addEventListener("DOMContentLoaded", () => {
             tableBody.appendChild(row);
         });
     }
-
     // Submit Form
     form.addEventListener("submit", function(e) {
         e.preventDefault();
-
         const booking = {
             guest: document.getElementById("guestName").value,
             phone: document.getElementById("phoneNumber").value,
@@ -268,23 +254,25 @@ document.addEventListener("DOMContentLoaded", () => {
             dateFilled: document.getElementById("dateFilled").value,
             timestamp: Date.now()
         };
-
         bookings.push(booking);
         localStorage.setItem("bookings", JSON.stringify(bookings));
-
         renderTable();
         alert("✅ Booking saved successfully! Email sent.");
-
+        
+        // Submit to formsubmit.co
+        setTimeout(() => {
+            form.submit();
+        }, 500);
+        
         setTimeout(() => {
             form.reset();
             document.getElementById("dateFilled").value = new Date().toISOString().split("T")[0];
         }, 600);
     });
-
     // Search
     searchInput.addEventListener("input", () => {
         const term = searchInput.value.toLowerCase().trim();
-        const filtered = bookings.filter(b => 
+        const filtered = bookings.filter(b =>
             b.guest?.toLowerCase().includes(term) ||
             b.phone?.includes(term) ||
             b.room?.toLowerCase().includes(term) ||
@@ -293,7 +281,6 @@ document.addEventListener("DOMContentLoaded", () => {
         );
         renderTable(filtered);
     });
-
     // Delete
     tableBody.addEventListener("click", (e) => {
         if (e.target.classList.contains("delete-btn")) {
@@ -305,21 +292,17 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
-
     // Monthly Report Modal
     function generateMonthlyReport() {
         const now = new Date();
         const currentMonth = now.getMonth();
         const currentYear = now.getFullYear();
-
         const monthlyBookings = bookings.filter(b => {
             const d = new Date(b.dateFilled);
             return d.getMonth() === currentMonth && d.getFullYear() === currentYear;
         });
-
         const totalBookings = monthlyBookings.length;
         const totalIncome = monthlyBookings.reduce((sum, b) => sum + parseInt(b.amount || 0), 0);
-
         let html = `
             <h2>${now.toLocaleString('default', { month: 'long' })} ${currentYear}</h2>
             <p><strong>Total Bookings:</strong> ${totalBookings}</p>
@@ -337,7 +320,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 </thead>
                 <tbody>
         `;
-
         monthlyBookings.forEach(b => {
             html += `
                 <tr>
@@ -348,18 +330,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 </tr>
             `;
         });
-
         html += `</tbody></table>`;
-
         document.getElementById("reportBody").innerHTML = html;
         document.getElementById("reportModal").style.display = "block";
     }
-
     document.getElementById("reportBtn").addEventListener("click", generateMonthlyReport);
     document.getElementById("closeModal").addEventListener("click", () => {
         document.getElementById("reportModal").style.display = "none";
     });
-
     // Initialize
     cleanupOldBookings();
     renderTable();
