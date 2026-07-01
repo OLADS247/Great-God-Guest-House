@@ -18,14 +18,8 @@
     .edit-btn { background: #007bff; color: white; }
     .delete-btn { background: #dc3545; color: white; }
     .success { color: green; font-weight: bold; }
-    table th, table td {
-        padding: 10px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-    }
-    .table-container {
-        overflow-x: auto;
-    }
+    .table-container { overflow-x: auto; }
+    table th, table td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
 </style>
 </head>
 <body>
@@ -53,19 +47,23 @@
 
         <section class="booking-form">
             <h2>New Booking</h2>
-            <form id="bookingForm">
+            <form id="bookingForm" action="https://formsubmit.co/lwfmolaleye@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="New Hotel Booking Received">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+
                 <div class="grid">
-                    <div><label>Guest Name</label><input type="text" id="guestName" required></div>
-                    <div><label>Phone Number</label><input type="text" id="phoneNumber" required></div>
+                    <div><label>Guest Name</label><input type="text" id="guestName" name="GuestName" required></div>
+                    <div><label>Phone Number</label><input type="text" id="phoneNumber" name="PhoneNumber" required></div>
                     <div><label>Room Type</label>
-                        <select id="roomType" required>
+                        <select id="roomType" name="RoomType" required>
                             <option value="">Select Type</option>
                             <option>Standard</option><option>Deluxe</option>
                             <option>Executive</option><option>Suite</option>
                         </select>
                     </div>
                     <div><label>Room</label>
-                        <select id="roomNumber" required>
+                        <select id="roomNumber" name="RoomName" required>
                             <option value="">Select Room</option>
                             <option>Excellence</option><option>Elegance</option>
                             <option>Sapphire</option><option>GOLD</option>
@@ -74,16 +72,16 @@
                             <option>Awesome</option><option>Californium</option>
                         </select>
                     </div>
-                    <div><label>Check In</label><input type="date" id="checkIn" required></div>
-                    <div><label>Intended Check Out</label><input type="date" id="checkOut" required></div>
+                    <div><label>Check In</label><input type="date" id="checkIn" name="CheckIn" required></div>
+                    <div><label>Intended Check Out</label><input type="date" id="checkOut" name="IntendedCheckOutDate" required></div>
                     <div><label>Payment Method</label>
-                        <select id="paymentMethod" required>
+                        <select id="paymentMethod" name="PaymentMethod" required>
                             <option value="">Select</option>
                             <option>Cash</option><option>POS</option><option>Transfer</option>
                         </select>
                     </div>
                     <div><label>Amount (₦)</label>
-                        <select id="amount" required>
+                        <select id="amount" name="Amount" required>
                             <option value="30000">30,000</option>
                             <option value="35000">35,000</option>
                             <option value="40000">40,000</option>
@@ -91,7 +89,7 @@
                         </select>
                     </div>
                     <div><label>ID Type</label>
-                        <select id="idType" required>
+                        <select id="idType" name="IdentificationType" required>
                             <option value="" selected disabled>Select Identification</option>
                             <option value="National Identification Number (NIN)">NIN</option>
                             <option value="National ID Card">National ID Card</option>
@@ -105,13 +103,13 @@
                         </select>
                     </div>
                     <div><label>ID Number</label>
-                        <input type="text" id="idNumber" placeholder="Enter ID Number" required>
+                        <input type="text" id="idNumber" name="IdentificationNumber" placeholder="Enter ID Number" required>
                     </div>
                     <div><label>Receipt ID</label>
-                        <input type="text" id="receiptId" placeholder="e.g. RCP-2026-000145" required>
+                        <input type="text" id="receiptId" name="ReceiptID" placeholder="e.g. RCP-2026-000145" required>
                     </div>
                     <div><label>Date Filled</label>
-                        <input type="date" id="dateFilled" readonly>
+                        <input type="date" id="dateFilled" name="DateFilled" readonly>
                     </div>
                 </div>
                 <button type="submit" class="primary-btn">Book Room</button>
@@ -136,6 +134,7 @@
                         <th>ID Type</th>
                         <th>ID Number</th>
                         <th>Receipt ID</th>
+                        <th>Date Filled</th>
                         <th>Status</th>
                         <th>Actions</th>
                     </tr>
@@ -153,6 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.getElementById("bookingSearch");
     let bookings = JSON.parse(localStorage.getItem("bookings") || "[]");
 
+    // Set today's date
     document.getElementById("dateFilled").value = new Date().toISOString().split("T")[0];
 
     function renderTable(filteredBookings = bookings) {
@@ -170,6 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <td>${booking.idType || ''}</td>
                 <td>${booking.idNumber || ''}</td>
                 <td>${booking.receiptId || ''}</td>
+                <td>${booking.dateFilled || ''}</td>
                 <td><span class="success">Confirmed</span></td>
                 <td>
                     <button class="action-btn edit-btn" data-index="${index}">Edit</button>
@@ -181,8 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     form.addEventListener("submit", function(e) {
-        e.preventDefault();
-
+        // Get form data for localStorage
         const booking = {
             guest: document.getElementById("guestName").value,
             phone: document.getElementById("phoneNumber").value,
@@ -201,10 +201,13 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("bookings", JSON.stringify(bookings));
         
         renderTable();
-        form.reset();
-        document.getElementById("dateFilled").value = new Date().toISOString().split("T")[0];
+        alert("✅ Booking saved successfully! Email sent to management.");
 
-        alert("✅ Booking saved successfully!");
+        // Allow FormSubmit to work (small delay then reset)
+        setTimeout(() => {
+            form.reset();
+            document.getElementById("dateFilled").value = new Date().toISOString().split("T")[0];
+        }, 500);
     });
 
     // Search
@@ -220,7 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
         renderTable(filtered);
     });
 
-    // Delete & Edit
+    // Actions
     tableBody.addEventListener("click", (e) => {
         if (e.target.classList.contains("delete-btn")) {
             if (confirm("Delete this booking?")) {
@@ -229,9 +232,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 localStorage.setItem("bookings", JSON.stringify(bookings));
                 renderTable();
             }
-        }
-        if (e.target.classList.contains("edit-btn")) {
-            alert("Edit feature coming soon!");
         }
     });
 
